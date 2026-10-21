@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Safe - Grievance Reporting System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <div class="logo">🛡️ CampusSafe</div>
+            <nav class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#report">Report Incident</a>
+                <a href="#track">Track Complaint</a>
+                <a href="#emergency" class="btn-nav-emergency">Emergency Help</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>Safe, Confidential, and Ragging-Free Campus</h1>
+            <p>Your safety is our priority. Report bullying, ragging, or academic grievances securely. You are protected, and your voice matters.</p>
+            <div class="hero-buttons">
+                <a href="#report" class="btn btn-primary">Report an Incident</a>
+                <a href="#track" class="btn btn-secondary">Track My Complaint</a>
+            </div>
+            <p class="privacy-note">🔒 All submissions are 100% confidential and can be made anonymously.</p>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="grid-4">
+                <div class="card text-center">
+                    <div class="step-icon">1</div>
+                    <h3>Submit Report</h3>
+                    <p>Fill out the incident details. Choose to stay anonymous if you prefer.</p>
+                </div>
+                <div class="card text-center">
+                    <div class="step-icon">2</div>
+                    <h3>Get Token</h3>
+                    <p>Receive a unique tracking token immediately upon submission.</p>
+                </div>
+                <div class="card text-center">
+                    <div class="step-icon">3</div>
+                    <h3>Track Status</h3>
+                    <p>Use your token to check the progress of the investigation securely.</p>
+                </div>
+                <div class="card text-center">
+                    <div class="step-icon">4</div>
+                    <h3>Resolution</h3>
+                    <p>The campus committee reviews and resolves the issue confidentially.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Report Incident Section -->
+    <section id="report" class="section">
+        <div class="container">
+            <h2 class="section-title">Confidential Incident Report</h2>
+            <div class="card form-card">
+                <form id="complaintForm">
+                    <div class="form-group">
+                        <label for="category">Incident Category *</label>
+                        <select id="category" required>
+                            <option value="">-- Select Category --</option>
+                            <option value="ragging">Hostel Ragging</option>
+                            <option value="bullying">Bullying / Harassment</option>
+                            <option value="hostel">Hostel Issue</option>
+                            <option value="academic">Academic Grievance</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group-row">
+                        <div class="form-group w-50">
+                            <label for="date">Date of Incident *</label>
+                            <input type="date" id="date" required>
+                        </div>
+                        <div class="form-group w-50">
+                            <label for="location">Location *</label>
+                            <input type="text" id="location" placeholder="e.g., Boys Hostel Block B" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Detailed Description *</label>
+                        <textarea id="description" rows="5" placeholder="Please describe what happened..." required></textarea>
+                    </div>
+
+                    <div class="form-group toggle-group">
+                        <input type="checkbox" id="anonymousToggle">
+                        <label for="anonymousToggle"><strong>Submit Anonymously</strong> (Check this to hide your identity)</label>
+                    </div>
+
+                    <div id="contactDetails" class="contact-section">
+                        <p class="section-subtitle">Contact Information (Optional - Leave blank if you prefer)</p>
+                        <div class="form-group">
+                            <label for="studentName">Full Name</label>
+                            <input type="text" id="studentName" placeholder="Your Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="studentId">Student ID / Roll No.</label>
+                            <input type="text" id="studentId" placeholder="e.g., CS2024001">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">Submit Secure Report</button>
+                </form>
+
+                <!-- Token Display Area (Hidden by default) -->
+                <div id="tokenDisplay" class="token-box hidden">
+                    <h3>Report Submitted Successfully!</h3>
+                    <p>Your unique tracking token is:</p>
+                    <h2 id="generatedToken"></h2>
+                    <p class="warning-text">⚠️ Please save this token. It is the only way to track your complaint.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Track Complaint Section -->
+    <section id="track" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Track Complaint Status</h2>
+            <div class="card form-card text-center">
+                <p>Enter the token provided to you when you submitted your report.</p>
+                <form id="trackForm" class="track-form">
+                    <input type="text" id="trackingInput" placeholder="Enter Token (e.g., TKN-123456)" required>
+                    <button type="submit" class="btn btn-secondary">Track Status</button>
+                </form>
+                
+                <!-- Status Display (Hidden by default) -->
+                <div id="statusDisplay" class="status-box hidden">
+                    <h4>Current Status:</h4>
+                    <div class="status-badge" id="statusBadge">Under Review</div>
+                    <p class="status-desc" id="statusDesc">Your complaint has been received and is currently being reviewed by the Anti-Ragging Committee.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Help Section -->
+    <section id="emergency" class="section">
+        <div class="container">
+            <h2 class="section-title text-danger">Emergency Support</h2>
+            <p class="text-center mb-2">If you are in immediate danger, please use the contacts below. Available 24/7.</p>
+            
+            <div class="grid-2">
+                <div class="card emergency-card">
+                    <h3>🚨 National Anti-Ragging Helpline</h3>
+                    <p>Toll-free, completely anonymous, and available 24/7.</p>
+                    <a href="tel:18001805522" class="btn btn-danger btn-block">Call: 1800-180-5522</a>
+                </div>
+                <div class="card emergency-card">
+                    <h3>👨‍🏫 Campus Chief Proctor</h3>
+                    <p>Direct line to the university discipline and safety office.</p>
+                    <a href="tel:+919876543210" class="btn btn-danger btn-block">Call Proctor Office</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h4>CampusSafe</h4>
+                    <p>Dedicated to maintaining a secure, ragging-free environment for all students.</p>
+                </div>
+                <div>
+                    <h4>Privacy Guarantee</h4>
+                    <p>All data processed here is for demonstration. In a real environment, this data is encrypted and legally protected.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Campus Grievance System Project. Created for academic purposes.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
